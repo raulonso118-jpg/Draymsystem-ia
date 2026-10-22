@@ -104,3 +104,51 @@ class SelectorAgentes:
 
     def calcular_puntuacion(
         self,
+        nombre,
+        especialidades=None,
+        tarea_tag=None
+    ) -> float:
+
+        datos = self.metricas.get(
+            nombre,
+            {}
+        )
+
+        exitos = datos.get("exitos", 0)
+        fallos = datos.get("fallos", 0)
+        experiencia = datos.get("experiencia", 0)
+
+        puntuacion = float(exitos - fallos) + experiencia * 0.1
+
+        if (
+            tarea_tag
+            and especialidades
+            and tarea_tag in especialidades
+        ):
+            puntuacion += 10.0
+
+        return puntuacion
+
+    def seleccionar(
+        self,
+        candidatos: List[Any],
+        tarea_tag=None
+    ):
+
+        if not candidatos:
+            return None
+
+        def puntuar(agente):
+
+            nombre = getattr(agente, "INTENT_TAG", None) or agente.__class__.__name__
+
+            return self.calcular_puntuacion(
+                nombre,
+                getattr(agente, "SPECIALTIES", None),
+                tarea_tag
+            )
+
+        return max(
+            candidatos,
+            key=puntuar
+        )

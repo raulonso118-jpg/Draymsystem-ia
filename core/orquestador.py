@@ -50,7 +50,7 @@ try:
     from core.enjambre import Enjambre
 except ImportError:
     try:
-        from core.enjambre import GestorEnjambre as Enjambre
+        from core.enjambre import MotorEnjambre as Enjambre
     except ImportError:
         Enjambre = None
 

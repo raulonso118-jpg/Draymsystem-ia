@@ -317,7 +317,9 @@ class MotorNLP:
         self,
         texto: Any,
         eliminar_vacias: bool = False
-    ) -> Listtexto_normalizado = self.normalizar_texto(
+    ) -> List:
+
+        texto_normalizado = self.normalizar_texto(
             texto
         )
 
@@ -762,7 +764,9 @@ class MotorNLP:
     def extraer_acciones(
         self,
         texto: Any
-    ) -> Listacciones = []
+    ) -> List:
+
+        acciones = []
         acciones_vistas = set()
 
         for token in self.tokenizar(

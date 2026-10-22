@@ -127,7 +127,9 @@ class AgenteQA(AgenteGeneral):
     def _eliminar_duplicados(
         self,
         elementos: List[Any]
-    ) -> Listresultado = []
+    ) -> List:
+
+        resultado = []
 
         claves_vistas = set()
 
@@ -398,7 +400,9 @@ class AgenteQA(AgenteGeneral):
     def generar_recomendaciones(
         self,
         problemas
-    ) -> Listrecomendaciones = []
+    ) -> List:
+
+        recomendaciones = []
 
         mapa_recomendaciones = {
             "CONTENIDO_NULO":
