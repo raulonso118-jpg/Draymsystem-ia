@@ -154,6 +154,8 @@ class DraymSystemApp(App):
         # Inicializar el orquestador y obtener estado real
         try:
             self.orquestador = Orquestador()
+            from agentes import crear_agentes
+            self.orquestador.registrar_agentes(crear_agentes())
             if hasattr(self.orquestador, 'obtener_estado'):
                 estado = self.orquestador.obtener_estado()
                 ver = estado.get('version', '1.0')

@@ -192,7 +192,9 @@ class AgenteInvestigador(AgenteGeneral):
     def _obtener_dominio(
         self,
         url
-    ) -> Optionaltexto = self._normalizar_texto(
+    ) -> Optional[str]:
+
+        texto = self._normalizar_texto(
             url
         )
 
@@ -1021,7 +1023,9 @@ class AgenteInvestigador(AgenteGeneral):
         self,
         fuentes,
         hallazgos
-    ) -> Listlimitaciones = []
+    ) -> List:
+
+        limitaciones = []
 
         if not fuentes:
 

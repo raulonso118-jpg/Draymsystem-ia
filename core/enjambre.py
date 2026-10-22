@@ -50,7 +50,10 @@ class MotorEnjambre:
 
     # ======================================================
     # DATOS DE LA TAREA
-    # ======================================================area(
+    # ======================================================
+
+    @staticmethod
+    def _obtener_valor_tarea(
         tarea,
         nombre: str,
         valor_default=None
